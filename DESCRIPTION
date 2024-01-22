@@ -1,0 +1,12 @@
+Package: poputils
+Type: Package
+Title: A suite of cleaning functions for U.S. Census Bureau datasets
+Version: 0.1.0
+Authors@R: person("Vania", "Wang", email = "vania.wang@census.gov", role = c("cre", "aut"))
+Description: A suite of utility functions that help convert various census datasets.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+Imports: 
+    magrittr
