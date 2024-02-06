@@ -1,4 +1,7 @@
-#' @description
+#' Pivots International Database exports from wide to long format
+#'
+#' @description This function is capable of cleaning two types of IDB formats.
+#' `is_legacy`
 #'
 #' @author Vania Wang
 #'
