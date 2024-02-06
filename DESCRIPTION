@@ -1,6 +1,6 @@
-Package: poputils
+Package: ipc_poputils
 Type: Package
-Title: A suite of cleaning functions for U.S. Census Bureau datasets
+Title: A suite of cleaning functions for U.S. Census Bureau datasets from the International Programs Center
 Version: 0.1.0
 Authors@R: person("Vania", "Wang", email = "vania.wang@census.gov", role = c("cre", "aut"))
 Description: A suite of utility functions that help convert various census datasets.

@@ -1,1 +1,1 @@
-# `poputils` tutorial
+# `ipc_poputils` tutorial
