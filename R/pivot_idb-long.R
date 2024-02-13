@@ -1,7 +1,10 @@
 #' Pivots International Database exports from wide to long format
 #'
-#' @description This function is capable of cleaning two types of IDB formats.
+#' @description This function is capable of pivoting two types of IDB formats.
+#' The output format will have, at minimum, the following columns:
+#' ADM_LEVEL, POP_TOTAL
 #' `is_legacy`
+#'
 #'
 #' @author Vania Wang
 #'
@@ -19,8 +22,8 @@
 #' @param is_legacy Default value is `FALSE`
 #'
 #' @examples
-#' clean_idb("tanzania", "data-raw/", filetype = ".xlsx", is_legacy = TRUE)
-#' clean_idb("kenya", "data-raw/", skip = 1)
+#' clean_idb("tanzania", "data-raw/pop-data/", filetype = ".xlsx", is_legacy = TRUE)
+#' clean_idb("kenya", "data-raw/pop-data/", skip = 1)
 #'
 #' @returns A data frame.
 #'
@@ -56,13 +59,12 @@ clean_idb <- function(country,
 
     # apply the above function to every possible ADM level
     adm_num <- c(0:max_adm)
-    adm_names_list <- lapply(adm_num, function(n) adm_name_gen(n))
+    adm_names_list <- lapply(adm_num, function(n) adm_name_gen(n, dat))
 
     # In dat, create new columns called ADM[NUM]_GEO_MATCH,
     # where NUM ranges from 0 to max_adm
     for (i in adm_num) {
       end_index = i+1
-      print(end_index)
       vec <- unlist(generate_geomatch_vecs(dat$GEO_MATCH, end_index))
       dat[ , paste0('ADM', i, '_GEO_MATCH')] <- vec
     }
@@ -100,7 +102,7 @@ clean_idb <- function(country,
 
     # remove unnecessary columns
     clean_dat <-
-      pop_dat_long %>% dplyr::select(ADM_LEVEL, YR,
+      pop_dat_long %>% dplyr::select(ADM_LEVEL, YR, GEO_MATCH,
                                      starts_with("AREA_NAME_"),
                                      POP_TOTAL, SEX, AGE_CAT)
 
@@ -126,8 +128,7 @@ clean_idb <- function(country,
   } else {
     # remove unwanted columns
     dat <- dat %>% dplyr::select(-c("USCBCMNT":"NSO_NAME"),
-                                 -AREA_NAME,
-                                 -GEO_MATCH)
+                                 -AREA_NAME)
     # remove columns with all NAs
     dat <- dat[, colSums(is.na(dat)) != nrow(dat)]
 
@@ -163,7 +164,7 @@ clean_idb <- function(country,
     adm_names <- sapply(0:max_adm, function(num) paste0("ADM", num, "_NAME"))
 
     # select relevant ADM data
-    dat <- dat %>% select(ADM_LEVEL, !!adm_names, YR, SEX, AGE_CAT, POP_TOTAL)
+    dat <- dat %>% select(ADM_LEVEL, GEO_MATCH, !!adm_names, YR, SEX, AGE_CAT, POP_TOTAL)
 
     # rearrange columns
     final <- dat %>%

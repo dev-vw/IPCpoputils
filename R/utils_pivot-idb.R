@@ -10,7 +10,7 @@
 #' @returns A data frame.
 #'
 #' @export
-adm_name_gen <- function(n) {
+adm_name_gen <- function(n, dat) {
   print(paste0('Processing ADM', n, ' names'))
   df <- dat[dat$ADM_LEVEL == n, ] %>%
     dplyr::group_by(GEO_MATCH, AREA_NAME, ADM_LEVEL) %>%
@@ -32,7 +32,7 @@ adm_name_gen <- function(n) {
 #'
 #' @export
 generate_geomatch_vecs <- function(vec, i) {
-  vec_split <- stringr::str_split(dat$GEO_MATCH, '_')
+  vec_split <- stringr::str_split(vec, '_')
   vec_sub <- lapply(vec_split, function(vec) vec[1:i])
   vec_cat <- unlist(lapply(vec_sub, function(vec) paste(vec, collapse = '_')))
 
