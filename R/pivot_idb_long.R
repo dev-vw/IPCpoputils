@@ -28,12 +28,11 @@
 #' @returns A data frame.
 #'
 #' @export
-
-clean_idb <- function(country,
-                      datadir,
-                      filetype = ".csv",
-                      skip = 0,
-                      is_legacy = FALSE) {
+pivot_idb_long <- function(country,
+                           datadir,
+                           filetype = ".csv",
+                           skip = 0,
+                           is_legacy = FALSE) {
 
   # import file name
   if (filetype == ".csv") {
