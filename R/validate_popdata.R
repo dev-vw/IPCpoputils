@@ -1,30 +1,29 @@
-#' Validates the imported population data
+#' Validate the imported population data
 #'
-#' @param popdf
+#' @param pop_data A data frame containing population data
 #'
-#' @return
+#' @return A logical
+#'
 #' @export
-#'
-#' @examples
-validate_popdata <- function(popdf) {
+validate_popdata <- function(pop_data) {
 
-  # required columns that a popdf should definitely have
+  # required columns that a pop_data should definitely have
   req_cols <- c("adm_level", "geo_match", "adm0", "adm1",
                 "yr", "sex", "age_cat", "pop_total")
 
-  # check if all req_cols exists in popdf
-  if (!all(req_cols %in% tolower(colnames(popdf)))) {
+  # check if all req_cols exists in pop_data
+  if (!all(req_cols %in% tolower(colnames(pop_data)))) {
     warning("Required columns are not present in the input population data frame.\n")
   }
 
   # are there duplicate column names? throw a warning if yes
-  if (any(duplicated(tolower(colnames(popdf))))) {
+  if (any(duplicated(tolower(colnames(pop_data))))) {
     warning("There are duplicated columns in the input population data frame. Only the first instance of a duplicated column will be used.\n")
   }
 
   # now examine the cols outside of req_cols and examine them
   # for validity
-  diff_cols <- c(setdiff(tolower(colnames(popdf)), req_cols))
+  diff_cols <- c(setdiff(tolower(colnames(pop_data)), req_cols))
 
   valid_cols <- diff_cols[grepl("^adm\\d$", diff_cols)]
   invalid_cols <- diff_cols[!grepl("^adm\\d$", diff_cols)]

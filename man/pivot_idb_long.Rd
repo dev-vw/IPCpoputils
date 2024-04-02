@@ -15,22 +15,25 @@ pivot_idb_long(
 \arguments{
 \item{country}{Case sensitive name of file name (excepting file extension).}
 
-\item{datadir}{Relative or absolute path.}
+\item{datadir}{Relative or absolute path to folder containing the input file.}
 
-\item{filetype}{Default value is `.csv`}
+\item{filetype}{Default value is \code{.csv}.}
 
-\item{skip}{Default value is `1`}
+\item{skip}{Default value is \code{1}. An input for read_csv for skipping any
+number of header rows.}
 
-\item{is_legacy}{Default value is `FALSE`}
+\item{is_legacy}{Default value is \code{FALSE} for processing the most recent
+version of IDB files.}
 }
 \value{
-A data frame.
+A clean data frame with (possibly) the following columns: "ADM_LEVEL",
+"GEO_MATCH", "ADM0", "ADM2", "YR", "SEX", "AGE_CAT", "POP_TOTAL"
 }
 \description{
 This function is capable of pivoting two types of IDB formats.
 The output format will have, at minimum, the following columns:
-ADM_LEVEL, POP_TOTAL
-`is_legacy`
+"ADM_LEVEL", "GEO_MATCH", "ADM0", "ADM2", "YR", "SEX", "AGE_CAT",
+"POP_TOTAL"
 }
 \examples{
 clean_idb("tanzania", "data-raw/pop-data/", filetype = ".xlsx", is_legacy = TRUE)

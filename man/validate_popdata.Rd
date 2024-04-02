@@ -2,13 +2,16 @@
 % Please edit documentation in R/validate_popdata.R
 \name{validate_popdata}
 \alias{validate_popdata}
-\title{Validates the imported population data}
+\title{Validate the imported population data}
 \usage{
-validate_popdata(popdf)
+validate_popdata(pop_data)
 }
 \arguments{
-\item{popdf}{}
+\item{pop_data}{A data frame containing population data}
+}
+\value{
+A logical
 }
 \description{
-Validates the imported population data
+Validate the imported population data
 }

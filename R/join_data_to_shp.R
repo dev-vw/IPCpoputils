@@ -1,3 +1,14 @@
+#' Title
+#'
+#' @param pop_data
+#' @param pop_sf
+#' @param adm_level
+#' @param yr
+#'
+#' @return
+#' @export
+#'
+#' @examples
 join_data_to_shp <- function(pop_data, pop_sf, adm_level = "ADM1", yr = 2020) {
 
   # TODO

@@ -25,8 +25,8 @@ filter_popdata <- function(pop_data, yr = NULL, adm_level = 0, sex = c("B")) {
   }
 
   df <- pop_data %>% filter(ADM_LEVEL == adm_level,
-                         YR %in% yr,
-                         SEX %in% sex)
+                            YR %in% yr,
+                            SEX %in% sex)
 
   return(df)
 }

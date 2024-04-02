@@ -1,12 +1,26 @@
-library(tidyverse)
-library(ggplot2)
-library(lemon)
-library(gridExtra)
-
-#' required data format ---
-#' selected year: e.g. 2015
-#' adm selection: e.g. 1
-#' sex: only M/F
+#' Plot a population pyramid
+#'
+#' @description
+#' A short description...
+#'
+#' `plot_pyr` plots a single population pyramid. The input data is `pop_data` and
+#' has strict requirements for the pyramid to render correctly:
+#'
+#' * The YR column should have one year only
+#' * The ADM_LEVEL column should have one level only
+#' * The SEX column should have two values only
+#'
+#' @param pop_data A data frame containing population data.
+#' @param adm_name A string.
+#' @param age_group A choice between `one` or `five`.
+#'
+#' @import ggplot2
+#' @importFrom lemon scale_x_symmetric
+#'
+#' @returns a plot
+#'
+#' @example
+#' @export
 plot_pyr <- function(pop_data, adm_name, age_group) {
 
   pop_range_seq <- pretty_symmetric(pop_data$POP_TOTAL/1000)
@@ -19,8 +33,8 @@ plot_pyr <- function(pop_data, adm_name, age_group) {
                             y = as.factor(AGE_CAT),
                             fill = SEX)) +
     geom_col() +
-    scale_x_symmetric(labels = abs,
-                      breaks = pop_range_seq) +
+    lemon::scale_x_symmetric(labels = abs,
+                             breaks = pop_range_seq) +
     ggtitle(toupper(adm_name)) +
     theme(legend.position = "none") +
     xlab("Population (in thousands)") +
@@ -30,10 +44,26 @@ plot_pyr <- function(pop_data, adm_name, age_group) {
   return(p)
 }
 
+#' Plot subnational population pyramids
 #'
-plot_pyr_subnat <- function(country_data, age_group, adm_var) {
+#' `plot_pyr_subnat` generates a list population pyramid plots. The input data is
+#' `pop_data` and has strict requirements for the pyramid to render correctly:
+#'
+#' * The YR column should have one year only
+#' * The SEX column should have two values only
+#'
+#' @param country_data A data frame containing population data.
+#' @param age_group A choice between `one` or `five`.
+#' @param adm_var The column containing the ADM level of each entry. Defaults to `ADM_LEVEL`.
+#'
+#' @returns a list of plots
+#'
+#' @examples
+#'
+#'
+#' @export
+plot_pyr_subnat <- function(country_data, age_group, adm_var = "ADM_LEVEL") {
   adm_names <- unique(country_data[[adm_var]])
-  print(adm_names)
 
   plots <- lapply(adm_names, function(name) {
     df <- country_data[country_data[[adm_var]] == name, ]
@@ -52,4 +82,6 @@ plot_pyr_subnat <- function(country_data, age_group, adm_var) {
   #   units = "in"
   # )
 }
+
+#' TODO: create a save plots function
 

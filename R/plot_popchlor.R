@@ -1,23 +1,28 @@
-#' Title
+#' Plot a population choropleth map
 #'
-#' @param adm_sf
-#' @param pop_data
-#' @param country
-#' @param year
-#' @param breaks
-#' @param adm_level
+#' @description Given an ADM shapefile (adm_sf) and population data (pop_data),
+#' returns a choropleth plot containing scaled population values. Defaults to
+#' log transformed population.
 #'
-#' @param
+#'
+#' @author Vania Wang
+#'
+#'
+#' @param adm_sf A shapefile with `GEO_MATCH` or (equivalent) attribute.
+#' @param pop_data A data frame containing population data
+#' @param country A string
+#' @param year A numeric specifying year
+#' @param breaks A vector of breaks
+#' @param adm_level A numeric specifying ADM level
 #'
 #' @import ggplot2
 #' @import viridis
 #' @import scales
 #' @importFrom stringr str_to_title
 #'
-#' @return
-#' @export
+#' @returns A choropleth plot
 #'
-#' @examples
+#' @export
 plot_chlor <- function(adm_sf,
                        pop_data,
                        country,
@@ -30,11 +35,10 @@ plot_chlor <- function(adm_sf,
   }
 
 
-  message("- Step 1 of 3: Joining data")
-  message("- Step 2 of 3: Simplifying data")
+  message("- Step 1 of 2: Joining data")
   joined_df <- join_data_to_shp(pop_data, adm_sf, adm_level = adm_level, yr = yr)
 
-  message("- Step 3 of 3: Plotting chloropleth...please be patient")
+  message("- Step 2 of 2: Plotting chloropleth...please be patient")
   ggplot() +
     geom_sf(data = joined_df,
             aes(fill = POP_TOTAL),
@@ -50,7 +54,6 @@ plot_chlor <- function(adm_sf,
                                                      title.position = "top")) +
     labs(
       title = paste0("Population across ", stringr::str_to_title(country), " in ", yr),
-      #subtitle = "XXX",
       caption = "Source: U.S. Census Bureau | International Programs Center | International Database"
     ) +
     theme(

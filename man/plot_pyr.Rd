@@ -2,16 +2,28 @@
 % Please edit documentation in R/plot_pyr.R
 \name{plot_pyr}
 \alias{plot_pyr}
-\title{required data format ---
-selected year: e.g. 2015
-adm selection: e.g. 1
-sex: only M/F}
+\title{Plot a population pyramid}
 \usage{
 plot_pyr(pop_data, adm_name, age_group)
 }
+\arguments{
+\item{pop_data}{A data frame containing population data.}
+
+\item{adm_name}{A string.}
+
+\item{age_group}{A choice between \code{one} or \code{five}.}
+}
+\value{
+a plot
+}
 \description{
-required data format ---
-selected year: e.g. 2015
-adm selection: e.g. 1
-sex: only M/F
+A short description...
+
+\code{plot_pyr} plots a single population pyramid. The input data is \code{pop_data} and
+has strict requirements for the pyramid to render correctly:
+\itemize{
+\item The YR column should have one year only
+\item The ADM_LEVEL column should have one level only
+\item The SEX column should have two values only
+}
 }

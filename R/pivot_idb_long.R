@@ -2,9 +2,8 @@
 #'
 #' @description This function is capable of pivoting two types of IDB formats.
 #' The output format will have, at minimum, the following columns:
-#' ADM_LEVEL, POP_TOTAL
-#' `is_legacy`
-#'
+#' "ADM_LEVEL", "GEO_MATCH", "ADM0", "ADM2", "YR", "SEX", "AGE_CAT",
+#' "POP_TOTAL"
 #'
 #' @author Vania Wang
 #'
@@ -16,16 +15,19 @@
 #' @importFrom stringr str_split
 #'
 #' @param country Case sensitive name of file name (excepting file extension).
-#' @param datadir Relative or absolute path.
-#' @param filetype Default value is `.csv`
-#' @param skip Default value is `1`
-#' @param is_legacy Default value is `FALSE`
+#' @param datadir Relative or absolute path to folder containing the input file.
+#' @param filetype Default value is `.csv`.
+#' @param skip Default value is `1`. An input for read_csv for skipping any
+#' number of header rows.
+#' @param is_legacy Default value is `FALSE` for processing the most recent
+#' version of IDB files.
 #'
 #' @examples
 #' clean_idb("tanzania", "data-raw/pop-data/", filetype = ".xlsx", is_legacy = TRUE)
 #' clean_idb("kenya", "data-raw/pop-data/", skip = 1)
 #'
-#' @returns A data frame.
+#' @returns A clean data frame with (possibly) the following columns: "ADM_LEVEL",
+#' "GEO_MATCH", "ADM0", "ADM2", "YR", "SEX", "AGE_CAT", "POP_TOTAL"
 #'
 #' @export
 pivot_idb_long <- function(country,

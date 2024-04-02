@@ -2,13 +2,31 @@
 % Please edit documentation in R/plot_popchlor.R
 \name{plot_chlor}
 \alias{plot_chlor}
-\title{Title}
+\title{Plot a population choropleth map}
 \usage{
-plot_chlor(adm_sf, pop_data, adm_level = "ADM1", breaks = NULL)
+plot_chlor(adm_sf, pop_data, country, yr, adm_level = "ADM1", breaks = NULL)
 }
 \arguments{
-\item{adm_level}{}
+\item{adm_sf}{A shapefile with \code{GEO_MATCH} or (equivalent) attribute.}
+
+\item{pop_data}{A data frame containing population data}
+
+\item{country}{A string}
+
+\item{adm_level}{A numeric specifying ADM level}
+
+\item{breaks}{A vector of breaks}
+
+\item{year}{A numeric specifying year}
+}
+\value{
+A choropleth plot
 }
 \description{
-Title
+Given an ADM shapefile (adm_sf) and population data (pop_data),
+returns a choropleth plot containing scaled population values. Defaults to
+log transformed population.
+}
+\author{
+Vania Wang
 }
