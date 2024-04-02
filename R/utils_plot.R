@@ -8,7 +8,7 @@
 #'
 #' @returns A pretty numeric vector
 pretty_symmetric <- function(vec) {
-  if (any(vec <= 0)) {
+  if (any(vec < 0)) {
     stop("`vec` cannot contain 0 or negative numbers.")
   }
 
