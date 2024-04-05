@@ -62,7 +62,7 @@ plot_pyr <- function(pop_data, adm_name, age_group) {
 #'
 #'
 #' @export
-plot_pyr_subnat <- function(country_data, age_group, adm_var = "ADM_LEVEL") {
+plot_pyr_subnat <- function(country_data, age_group, adm_var = "ADM0") {
   adm_names <- unique(country_data[[adm_var]])
 
   plots <- lapply(adm_names, function(name) {

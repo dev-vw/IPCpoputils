@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param pop_data
+#' @param adm_name
+#'
+#' @return
+#' @export
+#'
+#' @examples
 plot_popts <- function(pop_data, adm_name) {
   p <- ggplot(data = pop_data,
               mapping = aes(x = YR,
