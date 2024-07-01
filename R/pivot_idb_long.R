@@ -9,8 +9,8 @@
 #'
 #' @importFrom readxl read_excel
 #' @importFrom readr read_csv
-#' @importFrom dplyr select left_join group_by summarize
-#' @importFrom tidyr gather
+#' @importFrom dplyr select left_join group_by summarize relocate
+#' @importFrom tidyr gather separate
 #' @importFrom purrr discard
 #' @importFrom stringr str_split
 #'
@@ -122,7 +122,7 @@ pivot_idb_long <- function(country,
 
     final <-
       clean_dat %>%
-      relocate("YR", "SEX", "AGE_CAT", "POP_TOTAL", .after = last_col())
+      dplyr::relocate("YR", "SEX", "AGE_CAT", "POP_TOTAL", .after = last_col())
 
     return(final)
 
@@ -138,10 +138,10 @@ pivot_idb_long <- function(country,
 
     # split the SEX_AGE_YR column into individual columns for each attribute
     dat <- dat %>%
-      separate(col = SEX_AGE_YR,
+      tidyr::separate(col = SEX_AGE_YR,
                into = c('SEX_AGE', 'YR'),
                sep = '_',) %>%
-      separate(col = SEX_AGE,
+      tidyr::separate(col = SEX_AGE,
                into = c('SEX', 'AGE_CAT'),
                sep = 1) %>%
       filter(AGE_CAT != 'TOTL')
@@ -169,7 +169,7 @@ pivot_idb_long <- function(country,
 
     # rearrange columns
     final <- dat %>%
-      relocate("YR", "SEX", "AGE_CAT", "POP_TOTAL", .after = last_col())
+      dplyr::relocate("YR", "SEX", "AGE_CAT", "POP_TOTAL", .after = last_col())
 
     # get rid of _NAME suffic after ADM levels
     colnames(final) <- gsub("_NAME", "", colnames(final))
