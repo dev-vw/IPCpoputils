@@ -23,8 +23,8 @@
 #' version of IDB files.
 #'
 #' @examples
-#' clean_idb("tanzania", "data-raw/pop-data/", filetype = ".xlsx", is_legacy = TRUE)
-#' clean_idb("kenya", "data-raw/pop-data/", skip = 1)
+#' pivot_idb_long("tanzania", "data-raw/pop-data/", filetype = ".xlsx", is_legacy = TRUE)
+#' pivot_idb_long("kenya", "data-raw/pop-data/", skip = 1)
 #'
 #' @returns A clean data frame with (possibly) the following columns: "ADM_LEVEL",
 #' "GEO_MATCH", "ADM0", "ADM2", "YR", "SEX", "AGE_CAT", "POP_TOTAL"
