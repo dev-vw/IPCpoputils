@@ -13,7 +13,6 @@
 #' @param country A string
 #' @param year A numeric specifying year
 #' @param breaks A vector of breaks
-#' @param adm_level A numeric specifying ADM level
 #'
 #' @import ggplot2
 #' @import viridis
@@ -23,22 +22,12 @@
 #' @returns A choropleth plot
 #'
 #' @export
-plot_chlor <- function(adm_sf,
-                       pop_data,
+plot_chlor <- function(joined_df,
                        country,
                        yr,
-                       adm_level = "ADM1",
                        breaks = NULL) {
 
-  if (paste0("ADM", unique(adm_sf[["ADM_LEVEL"]])) != adm_level) {
-    stop("`adm_level` does not match ADM level of `adm_sf`")
-  }
-
-
-  message("- Step 1 of 2: Joining data")
-  joined_df <- join_data_to_shp(pop_data, adm_sf, adm_level = adm_level, yr = yr)
-
-  message("- Step 2 of 2: Plotting chloropleth...please be patient")
+  message("- Plotting chloropleth...please be patient")
   ggplot() +
     geom_sf(data = joined_df,
             aes(fill = POP_TOTAL),
