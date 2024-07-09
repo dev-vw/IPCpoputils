@@ -27,7 +27,7 @@ join_data_to_shp <- function(pop_data, pop_sf, adm_level = "ADM1", yr = 2020) {
 
   message("- Joining data")
 
-  if (paste0("ADM", unique(adm_sf[["ADM_LEVEL"]])) != adm_level) {
+  if (paste0("ADM", unique(pop_sf[["ADM_LEVEL"]])) != adm_level) {
     stop("`adm_level` does not match ADM level of `adm_sf`")
   }
 
