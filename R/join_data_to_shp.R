@@ -38,7 +38,7 @@ join_data_to_shp <- function(pop_data, pop_sf, adm_level = "ADM1", yr = 2020) {
                                         yr = yr,
                                         adm_level = substr(adm_level, nchar(adm_level), nchar(adm_level)))
 
-    pop_data_filtered <- pop_data_filtered %>% group_by(GEO_MATCH, ADM4) %>% summarize(POP_TOTAL = sum(POP_TOTAL))
+    pop_data_filtered <- pop_data_filtered %>% group_by(GEO_MATCH, !!adm_level) %>% summarize(POP_TOTAL = sum(POP_TOTAL))
 
     joined_df <- left_join(pop_sf,
                            pop_data_filtered,
