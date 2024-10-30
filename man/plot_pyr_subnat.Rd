@@ -4,7 +4,7 @@
 \alias{plot_pyr_subnat}
 \title{Plot subnational population pyramids}
 \usage{
-plot_pyr_subnat(country_data, age_group, adm_var = "ADM_LEVEL")
+plot_pyr_subnat(country_data, age_group, adm_var = "ADM0")
 }
 \arguments{
 \item{country_data}{A data frame containing population data.}

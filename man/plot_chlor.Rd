@@ -4,18 +4,16 @@
 \alias{plot_chlor}
 \title{Plot a population choropleth map}
 \usage{
-plot_chlor(adm_sf, pop_data, country, yr, adm_level = "ADM1", breaks = NULL)
+plot_chlor(joined_df, country, yr, breaks = NULL)
 }
 \arguments{
+\item{country}{A string}
+
+\item{breaks}{A vector of breaks}
+
 \item{adm_sf}{A shapefile with \code{GEO_MATCH} or (equivalent) attribute.}
 
 \item{pop_data}{A data frame containing population data}
-
-\item{country}{A string}
-
-\item{adm_level}{A numeric specifying ADM level}
-
-\item{breaks}{A vector of breaks}
 
 \item{year}{A numeric specifying year}
 }

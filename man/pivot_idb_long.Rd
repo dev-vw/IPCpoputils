@@ -36,8 +36,8 @@ The output format will have, at minimum, the following columns:
 "POP_TOTAL"
 }
 \examples{
-clean_idb("tanzania", "data-raw/pop-data/", filetype = ".xlsx", is_legacy = TRUE)
-clean_idb("kenya", "data-raw/pop-data/", skip = 1)
+pivot_idb_long("tanzania", "data-raw/pop-data/", filetype = ".xlsx", is_legacy = TRUE)
+pivot_idb_long("kenya", "data-raw/pop-data/", skip = 1)
 
 }
 \author{
