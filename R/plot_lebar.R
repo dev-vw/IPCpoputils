@@ -23,7 +23,7 @@
 #' 
 #' 
 # Life Expectancy by geography and sex in 2018
-plot_le <- function(mort_data, adm_name) {
+plot_lebar <- function(mort_data, adm_name) {
   
   p <- mort_data |> 
     dplyr::filter(area_name == adm_name, # geography dropdown
