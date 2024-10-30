@@ -37,3 +37,50 @@ pretty_agecats <- function(agecat_vec) {
 
   return(vec)
 }
+
+#' Defines the plot themes for the mortality-related plot functions.
+#'
+#' @description This function charts the theme for the mortality plots in OSDS.
+#'
+#' @author Britta Schumacher
+#'
+#' @importFrom ggplot2 theme
+theme_plot <- function(...) {
+  theme(
+
+    plot.title.position = "plot",
+    #text = element_text(family = "Lato"),
+
+    # background colors
+    plot.background = element_rect(fill = "transparent",
+                                   color = NA),
+    panel.background = element_rect(fill = "transparent",
+                                    color = NA),
+    legend.background = element_rect(fill = "transparent",
+                                     color = NA),
+
+    # titles
+    legend.title = element_blank(),
+    legend.text = element_text(size = 12,
+                               color = "black",
+                               face = "plain"),
+    plot.title = element_text(size = 14,
+                              color = "black",
+                              face = "bold",
+                              lineheight = 1.2),
+    plot.subtitle = element_text(size = 14,
+                                 color = "black"),
+    axis.title.x = element_text(size = 12,
+                                color = "black",
+                                face = "bold"),
+    axis.title.y = element_text(size = 12,
+                                color = "black",
+                                face = "bold"),
+    axis.text.x = element_text(size = 8.5,
+                               color = "black"),
+    axis.text.y = element_text(size = 9.5,
+                               color = "black"),
+    axis.ticks.y = element_blank(),
+    ...
+  )
+}
