@@ -25,8 +25,8 @@ adm_name_gen <- function(n, dat) {
 #'
 #' @importFrom stringr str_split
 #'
-#' @param vec
-#' @param i
+#' @param vec a vector
+#' @param i an integer
 #'
 #' @returns A data frame.
 #'

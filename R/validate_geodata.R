@@ -1,6 +1,5 @@
-#' @param match_name
-#'
-#' @param adm_sf
+#' @param match_name string
+#' @param adm_sf sf
 #'
 #' @importFrom sf st_is_valid
 validate_geodata <- function(match_name, adm_sf) {

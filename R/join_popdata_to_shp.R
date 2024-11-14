@@ -1,15 +1,13 @@
 #' Title
 #'
-#' @param pop_data
-#' @param pop_sf
+#' @param pop_data df
+#' @param pop_sf sf
 #' @param adm_level A numeric specifying ADM level
 #' @param yr
 #'
-#' @return
+#' @return a joined dataframe
 #' @export
-#'
-#' @examples
-join_data_to_shp <- function(pop_data, pop_sf, adm_level = "ADM1", yr = 2020) {
+join_popdata_to_shp <- function(pop_data, pop_sf, adm_level = "ADM1", yr = 2020) {
 
   # TODO
   # tryCatch(

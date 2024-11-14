@@ -1,11 +1,11 @@
 #' Creates life expectancy visualization
 #'
-#' @description This function plots a bar graph showing life expectancy at birth 
+#' @description This function plots a bar graph showing life expectancy at birth
 #' on the x axis and sex (M/F)on the y axis.
 #'
 #' @author Britta Schumacher
 #'
-#' @importFrom ggplot2
+#' @import ggplot2
 #' @importFrom dplyr filter mutate arrange
 #' @importFrom forcats fct_relevel
 #' @importFrom scales label_number
@@ -20,17 +20,17 @@
 #' on the y axis.
 #'
 #' @export
-#' 
-#' 
+#'
+#'
 # Life Expectancy by geography and sex in 2018
 plot_lebar <- function(mort_data, adm_name) {
-  
-  p <- mort_data |> 
+
+  p <- mort_data |>
     dplyr::filter(area_name == adm_name, # geography dropdown
                   YR == 2018,
                   metric %in% c("male_le", "female_le")) |>
-    dplyr::mutate(metric = forcats::fct_relevel(metric, "male_le", "female_le")) |> 
-    dplyr::arrange(metric) |> 
+    dplyr::mutate(metric = forcats::fct_relevel(metric, "male_le", "female_le")) |>
+    dplyr::arrange(metric) |>
     ggplot(aes(x = metric, y = value, fill = metric)) +
     scale_y_continuous(labels = scales::label_number(accuracy = 1)) +
     geom_bar(stat = "identity", alpha = 0.8, show.legend = FALSE, width = 0.8) +
@@ -43,6 +43,6 @@ plot_lebar <- function(mort_data, adm_name) {
     xlab(("")) +
     coord_flip() +
     theme_plot()
-  
+
   return(p)
 }

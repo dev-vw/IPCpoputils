@@ -15,8 +15,8 @@
 #' @param breaks A vector of breaks
 #'
 #' @import ggplot2
-#' @import viridis
-#' @import scales
+#' @importFrom viridis scale_fill_viridis
+#' @importFrom scales breaks_log comma
 #' @importFrom stringr str_to_title
 #'
 #' @returns A choropleth plot

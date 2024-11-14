@@ -4,7 +4,7 @@
 #'
 #' @author Britta Schumacher
 #'
-#' @importFrom ggplot2
+#' @import ggplot2
 #' @importFrom dplyr filter mutate arrange
 #' @importFrom forcats fct_relevel
 #' @importFrom scales label_number

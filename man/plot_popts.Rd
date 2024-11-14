@@ -7,7 +7,12 @@
 plot_popts(pop_data, adm_name)
 }
 \arguments{
-\item{adm_name}{}
+\item{pop_data}{pop df}
+
+\item{adm_name}{a string}
+}
+\value{
+a plot
 }
 \description{
 Title

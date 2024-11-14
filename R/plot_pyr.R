@@ -18,8 +18,6 @@
 #' @importFrom lemon scale_x_symmetric
 #'
 #' @returns a plot
-#'
-#' @example
 #' @export
 plot_pyr <- function(pop_data, adm_name, age_group) {
 
@@ -57,9 +55,6 @@ plot_pyr <- function(pop_data, adm_name, age_group) {
 #' @param adm_var The column containing the ADM level of each entry. Defaults to `ADM_LEVEL`.
 #'
 #' @returns a list of plots
-#'
-#' @examples
-#'
 #'
 #' @export
 plot_pyr_subnat <- function(country_data, age_group, adm_var = "ADM0") {
