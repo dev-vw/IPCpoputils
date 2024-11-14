@@ -1,4 +1,4 @@
-#' Title
+#' Make Population Data Spatial
 #'
 #' @param pop_data df
 #' @param pop_sf sf

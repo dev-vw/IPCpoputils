@@ -2,7 +2,7 @@
 % Please edit documentation in R/join_popdata_to_shp.R
 \name{join_popdata_to_shp}
 \alias{join_popdata_to_shp}
-\title{Title}
+\title{Make Population Data Spatial}
 \usage{
 join_popdata_to_shp(pop_data, pop_sf, adm_level = "ADM1", yr = 2020)
 }
@@ -19,5 +19,5 @@ join_popdata_to_shp(pop_data, pop_sf, adm_level = "ADM1", yr = 2020)
 a joined dataframe
 }
 \description{
-Title
+Make Population Data Spatial
 }
