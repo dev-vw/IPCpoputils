@@ -21,10 +21,10 @@
 #'
 #'
 # Adolescent Fertility Rate in 2018
-plot_fertbar_adolescent <- function(fert_data) {
+plot_fertbar_adolescent <- function(fert_data,adm_level) {
 
   p <- fert_data |>
-    dplyr::filter(ADM_level == "ADM2",
+    dplyr::filter(ADM_level == adm_level,
                   YR == 2018,
                   metric %in% c("adolFR")) |>
     dplyr::arrange(metric) |>
