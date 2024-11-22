@@ -34,13 +34,16 @@ plot_lebar <- function(mort_data, adm_name) {
     ggplot(aes(x = metric, y = value, fill = metric)) +
     scale_y_continuous(labels = scales::label_number(accuracy = 1)) +
     geom_bar(stat = "identity", alpha = 0.8, show.legend = FALSE, width = 0.8) +
+    geom_text(aes(label = scales::label_number(accuracy = 0.1)(value)),  # Add labels
+              hjust = -0.3,  # Adjust horizontal alignment
+              size = 4) +  # Adjust size as needed
     scale_fill_manual(values = c("#FFFFB2", "#FD8D3C")) +
-    ggtitle(paste0("Life Expectancy at Birth, ",adm_name," 2018")) +
+    ggtitle(paste0("Life Expectancy at Birth, ", adm_name, " 2018")) +
     scale_x_discrete(
       labels = c("male_le" = "Male",
                  "female_le" = "Female")) +
-    ylab(("Years")) +
-    xlab(("")) +
+    ylab("Years") +
+    xlab("") +
     coord_flip() +
     theme_plot()
 
