@@ -21,7 +21,7 @@
 #'
 #'
 # Total Fertility Rate (all women over 15) by District in 2018
-plot_fertbar <- function(fert_data,adm_level) {
+plot_fertbar <- function(fert_data, adm_level) {
 
   p <- fert_data |>
     dplyr::filter(ADM_level == adm_level,
@@ -29,16 +29,17 @@ plot_fertbar <- function(fert_data,adm_level) {
                   metric %in% c("TFR")) |>
     dplyr::arrange(metric) |>
     ggplot(aes(x = reorder(area_name, value), y = value)) +
-    geom_text(aes(label = finalfit::round_tidy(value, digits = 2)),
-              hjust = -0.3,
-              size = 2.7) +
-    scale_y_continuous(breaks = scales::breaks_width(1)) +
     geom_bar(fill = '#41AB5D',
              stat = "identity",
              alpha = 0.8,
              show.legend = FALSE,
              width = 0.8) +
-    ggtitle(paste0("Total Fertility Rate by District, Malawi 2018")) +
+    geom_text(aes(label = scales::label_number(accuracy = 0.01)(value)),
+              hjust = -0.3,
+              size = 3,
+              color = "black") +  # Add labels with consistent formatting
+    scale_y_continuous(breaks = scales::breaks_width(1)) +
+    ggtitle("Total Fertility Rate by District, Malawi 2018") +
     labs(y = "Total Births per Woman",
          x = NULL) +
     coord_flip() +
@@ -46,3 +47,4 @@ plot_fertbar <- function(fert_data,adm_level) {
 
   return(p)
 }
+
