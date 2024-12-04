@@ -4,7 +4,7 @@
 \alias{plot_fertbar_adolescent}
 \title{Creates adolescent fertility rate visualization}
 \usage{
-plot_fertbar_adolescent(fert_data)
+plot_fertbar_adolescent(fert_data, adm_level)
 }
 \arguments{
 \item{fert_data}{Country mortality data in long format.}

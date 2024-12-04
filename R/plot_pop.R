@@ -1,6 +1,6 @@
 #' Creates population by District visualization
 #'
-#' @description This function plots a bar graph showing the population breakdown 
+#' @description This function plots a bar graph showing the population breakdown
 #' by district organized from greatest to least population in 2018.
 #'
 #' @author Britta Schumacher
@@ -15,21 +15,21 @@
 #' @examples
 #' plot_pop(pop,"Balaka")
 #'
-#' @returns A ggplot bar graph with total population on the x axis and 
+#' @returns A ggplot bar graph with total population on the x axis and
 #' district on the y-axis. Plot highlights specific geography when "Malawi"
 #' is not selected in the geography dropdown.
 #'
 #' @export
-#' 
-#' 
-#   
+#'
+#'
+#
 # Total Population by District
 plot_pop <- function(pop_data, adm_name) {
-  
-  p <- pop |> 
+
+  p <- pop |>
     dplyr::filter(ADM_level == "ADM2",
                   metric %in% c("POP_2018")) |>
-    dplyr::arrange(metric) |> 
+    dplyr::arrange(metric) |>
     ggplot(aes(x = reorder(area_name, value), y = value/1000)) +
     #geom_text(aes(label = value), hjust = -0.3, size = 2.7) +
     scale_y_continuous(breaks = scales::breaks_width(500)) +
@@ -39,12 +39,12 @@ plot_pop <- function(pop_data, adm_name) {
     xlab(("")) +
     coord_flip() +
     theme_plot()
-  
-  if(adm_name != "Malawi") { 
+
+  if(adm_name != "Malawi") {
     p <- p  + gghighlight::gghighlight(area_name == adm_name) # geography dropdown
     p
   } else {
     p
   }
-  
+
 }

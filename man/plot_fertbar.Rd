@@ -4,7 +4,7 @@
 \alias{plot_fertbar}
 \title{Creates total fertility rate visualization}
 \usage{
-plot_fertbar(fert_data)
+plot_fertbar(fert_data, adm_level)
 }
 \arguments{
 \item{fert_data}{Country mortality data in long format.}
