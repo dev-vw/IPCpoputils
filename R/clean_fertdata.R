@@ -4,6 +4,7 @@
 #'
 #' @importFrom readxl read_excel
 #' @importFrom tidyr pivot_longer
+#' @import dplyr
 #'
 #' @examples
 #' clean_fertdata("data-raw/mort-data/malawi.xlsx")

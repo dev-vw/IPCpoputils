@@ -6,6 +6,8 @@
 #'
 #' @param vec An ascending sequence of numbers greater than 0.
 #'
+#' @import ggplot2
+#'
 #' @returns A pretty numeric vector
 pretty_symmetric <- function(vec) {
   if (any(vec < 0)) {
@@ -41,6 +43,8 @@ pretty_agecats <- function(agecat_vec) {
 #' Defines the plot themes for the mortality-related plot functions.
 #'
 #' @description This function charts the theme for the mortality plots in OSDS.
+#'
+#' @import ggplot2
 #'
 #' @author Britta Schumacher
 #'

@@ -3,6 +3,8 @@
 #' @param pop_data pop df
 #' @param adm_name a string
 #'
+#' @import ggplot2
+#'
 #' @return a plot
 #' @export
 plot_popts <- function(pop_data, adm_name) {

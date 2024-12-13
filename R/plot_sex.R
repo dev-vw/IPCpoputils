@@ -15,18 +15,17 @@
 #' @examples
 #' plot_sex(pop,"Malawi")
 #'
-#' @returns A ggplot bar graph with total population on the x axis and 
+#' @returns A ggplot bar graph with total population on the x axis and
 #' male / female on the y-axis..
 #'
 #' @export
-#' 
-#' 
-#   
+#'
+#'
 # Population by Sex
 plot_sex <- function(pop_data, adm_name) {
-  #   
+  #
   p <- pop_data %>%
-    dplyr::filter(metric %in% c("POPm_2018","POPf_2018") 
+    dplyr::filter(metric %in% c("POPm_2018","POPf_2018")
                   & area_name == adm_name) |> # geography dropdown
     dplyr::mutate(Sex = forcats::fct_relevel(metric, "POPm_2018","POPf_2018")) %>%
     ggplot(aes(x = Sex, y = value/1000, fill = Sex)) +
@@ -39,6 +38,6 @@ plot_sex <- function(pop_data, adm_name) {
     xlab("") +
     theme_plot(aspect.ratio = 0.4) +
     coord_flip()
-  
+
   p
 }

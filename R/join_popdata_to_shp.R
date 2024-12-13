@@ -5,6 +5,8 @@
 #' @param adm_level A numeric specifying ADM level
 #' @param yr
 #'
+#' @importFrom dplyr filter left_join
+#'
 #' @return a joined dataframe
 #' @export
 join_popdata_to_shp <- function(pop_data, pop_sf, adm_level = "ADM1", yr = 2020) {

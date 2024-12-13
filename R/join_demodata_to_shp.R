@@ -7,6 +7,7 @@
 #' @param spatial_data sf, must have a matching column named "DIST_NAME"
 #'
 #' @importFrom dplyr filter left_join
+#'
 #' @return a df
 #' @export
 join_demodata_to_shp <- function(demo_data, spatial_data, geo_match) {
